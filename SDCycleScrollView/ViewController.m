@@ -193,6 +193,10 @@
    
 }
 
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didDragToIndex:(NSInteger)index {
+	NSLog(@"didDragToIndex %d", index);
+}
+
 
 
 

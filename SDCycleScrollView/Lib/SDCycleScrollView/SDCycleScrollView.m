@@ -649,7 +649,6 @@ NSString * const ID = @"SDCycleScrollViewCell";
     if (self.autoScroll) {
         [self invalidateTimer];
     }
-	NSLog(@"scrollViewWillBeginDragging %d", scrollView.isDragging);
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -657,7 +656,13 @@ NSString * const ID = @"SDCycleScrollViewCell";
     if (self.autoScroll) {
         [self setupTimer];
     }
-	NSLog(@"scrollViewDidEndDragging %d", scrollView.isDragging);
+	if (scrollView.isDragging) {
+		int itemIndex = [self currentIndex];
+		int indexOnPageControl = [self pageControlIndexWithCurrentCellIndex:itemIndex];
+		if ([self.delegate respondsToSelector:@selector(cycleScrollView:didDragToIndex:)]) {
+			[self.delegate cycleScrollView:self didDragToIndex:indexOnPageControl];
+		}
+	}
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
