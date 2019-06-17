@@ -43,7 +43,6 @@ NSString * const ID = @"SDCycleScrollViewCell";
 @interface SDCycleScrollView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 
-@property (nonatomic, weak) UICollectionView *mainView; // 显示图片的collectionView
 @property (nonatomic, weak) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) NSArray *imagePathsGroup;
 @property (nonatomic, weak) NSTimer *timer;
@@ -650,6 +649,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
     if (self.autoScroll) {
         [self invalidateTimer];
     }
+	NSLog(@"scrollViewWillBeginDragging %d", scrollView.isDragging);
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -657,6 +657,7 @@ NSString * const ID = @"SDCycleScrollViewCell";
     if (self.autoScroll) {
         [self setupTimer];
     }
+	NSLog(@"scrollViewDidEndDragging %d", scrollView.isDragging);
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

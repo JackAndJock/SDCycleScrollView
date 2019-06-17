@@ -93,7 +93,8 @@
     cycleScrollView.delegate = self;
     cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
     [demoContainerView addSubview:cycleScrollView];
-    cycleScrollView.scrollDirection = UICollectionViewScrollDirectionVertical;
+    cycleScrollView.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+	
     //         --- 轮播时间间隔，默认1.0秒，可自定义
     //cycleScrollView.autoScrollTimeInterval = 4.0;
     
@@ -101,66 +102,65 @@
 // >>>>>>>>>>>>>>>>>>>>>>>>> demo轮播图2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     // 网络加载 --- 创建带标题的图片轮播器
-    SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 280, w, 180) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    
-    cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
-    cycleScrollView2.titlesGroup = titles;
-    cycleScrollView2.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
-    [demoContainerView addSubview:cycleScrollView2];
-    
-    //         --- 模拟加载延迟
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        cycleScrollView2.imageURLStringsGroup = imagesURLStrings;
-    });
-    
-    /*
-     block监听点击方式
-     
-     cycleScrollView2.clickItemOperationBlock = ^(NSInteger index) {
-        NSLog(@">>>>>  %ld", (long)index);
-     };
-     
-     */
-    
-    
-// >>>>>>>>>>>>>>>>>>>>>>>>> demo轮播图3 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    
-    // 网络加载 --- 创建自定义图片的pageControlDot的图片轮播器
-    SDCycleScrollView *cycleScrollView3 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 500, w, 180) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    cycleScrollView3.currentPageDotImage = [UIImage imageNamed:@"pageControlCurrentDot"];
-    cycleScrollView3.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
-    cycleScrollView3.imageURLStringsGroup = imagesURLStrings;
-    
-    [demoContainerView addSubview:cycleScrollView3];
-    
-// >>>>>>>>>>>>>>>>>>>>>>>>> demo轮播图4 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    
-    // 网络加载 --- 创建只上下滚动展示文字的轮播器
-    // 由于模拟器的渲染问题，如果发现轮播时有一条线不必处理，模拟器放大到100%或者真机调试是不会出现那条线的
-    SDCycleScrollView *cycleScrollView4 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 750, w, 40) delegate:self placeholderImage:nil];
-    cycleScrollView4.scrollDirection = UICollectionViewScrollDirectionVertical;
-    cycleScrollView4.onlyDisplayText = YES;
-    
-    NSMutableArray *titlesArray = [NSMutableArray new];
-    [titlesArray addObject:@"纯文字上下滚动轮播"];
-    [titlesArray addObject:@"纯文字上下滚动轮播 -- demo轮播图4"];
-    [titlesArray addObjectsFromArray:titles];
-    cycleScrollView4.titlesGroup = [titlesArray copy];
-    [cycleScrollView4 disableScrollGesture];
-    
-    [demoContainerView addSubview:cycleScrollView4];
-    
+//    SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 280, w, 180) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+//    cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+//    cycleScrollView2.titlesGroup = titles;
+//    cycleScrollView2.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
+//    [demoContainerView addSubview:cycleScrollView2];
+//
+//    //         --- 模拟加载延迟
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        cycleScrollView2.imageURLStringsGroup = imagesURLStrings;
+//    });
+//
+//    /*
+//     block监听点击方式
+//
+//     cycleScrollView2.clickItemOperationBlock = ^(NSInteger index) {
+//        NSLog(@">>>>>  %ld", (long)index);
+//     };
+//
+//     */
+//
+//
+//// >>>>>>>>>>>>>>>>>>>>>>>>> demo轮播图3 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//
+//    // 网络加载 --- 创建自定义图片的pageControlDot的图片轮播器
+//    SDCycleScrollView *cycleScrollView3 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 500, w, 180) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+//    cycleScrollView3.currentPageDotImage = [UIImage imageNamed:@"pageControlCurrentDot"];
+//    cycleScrollView3.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
+//    cycleScrollView3.imageURLStringsGroup = imagesURLStrings;
+//
+//    [demoContainerView addSubview:cycleScrollView3];
+//
+//// >>>>>>>>>>>>>>>>>>>>>>>>> demo轮播图4 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//
+//    // 网络加载 --- 创建只上下滚动展示文字的轮播器
+//    // 由于模拟器的渲染问题，如果发现轮播时有一条线不必处理，模拟器放大到100%或者真机调试是不会出现那条线的
+//    SDCycleScrollView *cycleScrollView4 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 750, w, 40) delegate:self placeholderImage:nil];
+//    cycleScrollView4.scrollDirection = UICollectionViewScrollDirectionVertical;
+//    cycleScrollView4.onlyDisplayText = YES;
+//
+//    NSMutableArray *titlesArray = [NSMutableArray new];
+//    [titlesArray addObject:@"纯文字上下滚动轮播"];
+//    [titlesArray addObject:@"纯文字上下滚动轮播 -- demo轮播图4"];
+//    [titlesArray addObjectsFromArray:titles];
+//    cycleScrollView4.titlesGroup = [titlesArray copy];
+//    [cycleScrollView4 disableScrollGesture];
+//
+//    [demoContainerView addSubview:cycleScrollView4];
+	
     
 // >>>>>>>>>>>>>>>>>>>>>>>>> demo轮播图5 自定义cell的轮播图 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     // 如果要实现自定义cell的轮播图，必须先实现customCollectionViewCellClassForCycleScrollView:和setupCustomCell:forIndex:代理方法
     
-    _customCellScrollViewDemo = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 820, w, 120) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    _customCellScrollViewDemo.currentPageDotImage = [UIImage imageNamed:@"pageControlCurrentDot"];
-    _customCellScrollViewDemo.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
-    _customCellScrollViewDemo.imageURLStringsGroup = imagesURLStrings;
-    
-    [demoContainerView addSubview:_customCellScrollViewDemo];
+//    _customCellScrollViewDemo = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 820, w, 120) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+//    _customCellScrollViewDemo.currentPageDotImage = [UIImage imageNamed:@"pageControlCurrentDot"];
+//    _customCellScrollViewDemo.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
+//    _customCellScrollViewDemo.imageURLStringsGroup = imagesURLStrings;
+//
+//    [demoContainerView addSubview:_customCellScrollViewDemo];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -181,16 +181,17 @@
     [self.navigationController pushViewController:[NSClassFromString(@"DemoVCWithXib") new] animated:YES];
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+	if ([keyPath isEqualToString:@"dragging"]) {
+		NSLog(@"%@", change);
+	}
+}
 
-/*
- 
 // 滚动到第几张图回调
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index
 {
-    NSLog(@">>>>>> 滚动到第%ld张图", (long)index);
+   
 }
- 
- */
 
 
 

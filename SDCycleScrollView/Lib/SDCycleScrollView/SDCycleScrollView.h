@@ -79,6 +79,7 @@ typedef enum {
 @end
 
 @interface SDCycleScrollView : UIView
+@property (nonatomic, weak) UICollectionView *mainView; // 显示图片的collectionView
 
 
 /** 初始轮播图（推荐使用） */
